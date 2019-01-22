@@ -1,0 +1,10 @@
+{
+	"name": "react-prisma-fullstack",
+	"version": "1.0.0",
+	"main": "none",
+	"author": "rajinwonderland <raj@novvuminc.com>",
+	"license": "MIT",
+	"scripts": {
+		"install": "sh ./scripts.sh"
+	}
+}
