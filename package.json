@@ -5,7 +5,9 @@
 	"author": "rajinwonderland <raj@novvuminc.com>",
 	"license": "MIT",
 	"scripts": {
-		"install": "sh ./scripts.sh",
+		"install": "concurrently 'yarn install:client' 'yarn install:server'",
+		"install:client": "cd client && yarn",
+		"install:server": "cd server && yarn",
 		"start:server": "cd server && yarn start",
 		"start:client": "cd client && yarn start",
 		"start": "concurrently 'yarn start:server' 'yarn start:client'"
