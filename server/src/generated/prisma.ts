@@ -5,15 +5,15 @@ import { makePrismaBindingClass, BasePrismaOptions } from 'prisma-binding'
 
 export interface Query {
     users: <T = User[]>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    items: <T = Item[]>(args: { where?: ItemWhereInput, orderBy?: ItemOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    products: <T = Product[]>(args: { where?: ProductWhereInput, orderBy?: ProductOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     locations: <T = Location[]>(args: { where?: LocationWhereInput, orderBy?: LocationOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     photos: <T = Photo[]>(args: { where?: PhotoWhereInput, orderBy?: PhotoOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     user: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    item: <T = Item | null>(args: { where: ItemWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    product: <T = Product | null>(args: { where: ProductWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     location: <T = Location | null>(args: { where: LocationWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     photo: <T = Photo | null>(args: { where: PhotoWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     usersConnection: <T = UserConnection>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    itemsConnection: <T = ItemConnection>(args: { where?: ItemWhereInput, orderBy?: ItemOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    productsConnection: <T = ProductConnection>(args: { where?: ProductWhereInput, orderBy?: ProductOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     locationsConnection: <T = LocationConnection>(args: { where?: LocationWhereInput, orderBy?: LocationOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     photosConnection: <T = PhotoConnection>(args: { where?: PhotoWhereInput, orderBy?: PhotoOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     node: <T = Node | null>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
@@ -21,41 +21,41 @@ export interface Query {
 
 export interface Mutation {
     createUser: <T = User>(args: { data: UserCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    createItem: <T = Item>(args: { data: ItemCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    createProduct: <T = Product>(args: { data: ProductCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createLocation: <T = Location>(args: { data: LocationCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createPhoto: <T = Photo>(args: { data: PhotoCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateUser: <T = User | null>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateItem: <T = Item | null>(args: { data: ItemUpdateInput, where: ItemWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateProduct: <T = Product | null>(args: { data: ProductUpdateInput, where: ProductWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateLocation: <T = Location | null>(args: { data: LocationUpdateInput, where: LocationWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updatePhoto: <T = Photo | null>(args: { data: PhotoUpdateInput, where: PhotoWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteUser: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteItem: <T = Item | null>(args: { where: ItemWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteProduct: <T = Product | null>(args: { where: ProductWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteLocation: <T = Location | null>(args: { where: LocationWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deletePhoto: <T = Photo | null>(args: { where: PhotoWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertUser: <T = User>(args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    upsertItem: <T = Item>(args: { where: ItemWhereUniqueInput, create: ItemCreateInput, update: ItemUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    upsertProduct: <T = Product>(args: { where: ProductWhereUniqueInput, create: ProductCreateInput, update: ProductUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertLocation: <T = Location>(args: { where: LocationWhereUniqueInput, create: LocationCreateInput, update: LocationUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertPhoto: <T = Photo>(args: { where: PhotoWhereUniqueInput, create: PhotoCreateInput, update: PhotoUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateManyMutationInput, where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyItems: <T = BatchPayload>(args: { data: ItemUpdateManyMutationInput, where?: ItemWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyProducts: <T = BatchPayload>(args: { data: ProductUpdateManyMutationInput, where?: ProductWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyLocations: <T = BatchPayload>(args: { data: LocationUpdateManyMutationInput, where?: LocationWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     updateManyPhotos: <T = BatchPayload>(args: { data: PhotoUpdateManyMutationInput, where?: PhotoWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyItems: <T = BatchPayload>(args: { where?: ItemWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyProducts: <T = BatchPayload>(args: { where?: ProductWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyLocations: <T = BatchPayload>(args: { where?: LocationWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     deleteManyPhotos: <T = BatchPayload>(args: { where?: PhotoWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
   }
 
 export interface Subscription {
     user: <T = UserSubscriptionPayload | null>(args: { where?: UserSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
-    item: <T = ItemSubscriptionPayload | null>(args: { where?: ItemSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
+    product: <T = ProductSubscriptionPayload | null>(args: { where?: ProductSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
     location: <T = LocationSubscriptionPayload | null>(args: { where?: LocationSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> ,
     photo: <T = PhotoSubscriptionPayload | null>(args: { where?: PhotoSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T>> 
   }
 
 export interface Exists {
   User: (where?: UserWhereInput) => Promise<boolean>
-  Item: (where?: ItemWhereInput) => Promise<boolean>
+  Product: (where?: ProductWhereInput) => Promise<boolean>
   Location: (where?: LocationWhereInput) => Promise<boolean>
   Photo: (where?: PhotoWhereInput) => Promise<boolean>
 }
@@ -82,15 +82,15 @@ export interface BindingConstructor<T> {
  * Type Defs
 */
 
-const typeDefs = `type AggregateItem {
-  count: Int!
-}
-
-type AggregateLocation {
+const typeDefs = `type AggregateLocation {
   count: Int!
 }
 
 type AggregatePhoto {
+  count: Int!
+}
+
+type AggregateProduct {
   count: Int!
 }
 
@@ -112,520 +112,6 @@ enum Category {
 
 scalar DateTime
 
-type Item implements Node {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  category: Category
-  price: Float
-  location: Location
-  photos(where: PhotoWhereInput, orderBy: PhotoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Photo!]
-  listed: Boolean!
-  user: User
-}
-
-"""A connection to a list of items."""
-type ItemConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [ItemEdge]!
-  aggregate: AggregateItem!
-}
-
-input ItemCreateInput {
-  category: Category
-  price: Float
-  listed: Boolean
-  location: LocationCreateOneWithoutItemInput
-  photos: PhotoCreateManyWithoutItemInput
-  user: UserCreateOneWithoutItemsInput
-}
-
-input ItemCreateManyWithoutUserInput {
-  create: [ItemCreateWithoutUserInput!]
-  connect: [ItemWhereUniqueInput!]
-}
-
-input ItemCreateOneWithoutLocationInput {
-  create: ItemCreateWithoutLocationInput
-  connect: ItemWhereUniqueInput
-}
-
-input ItemCreateOneWithoutPhotosInput {
-  create: ItemCreateWithoutPhotosInput
-  connect: ItemWhereUniqueInput
-}
-
-input ItemCreateWithoutLocationInput {
-  category: Category
-  price: Float
-  listed: Boolean
-  photos: PhotoCreateManyWithoutItemInput
-  user: UserCreateOneWithoutItemsInput
-}
-
-input ItemCreateWithoutPhotosInput {
-  category: Category
-  price: Float
-  listed: Boolean
-  location: LocationCreateOneWithoutItemInput
-  user: UserCreateOneWithoutItemsInput
-}
-
-input ItemCreateWithoutUserInput {
-  category: Category
-  price: Float
-  listed: Boolean
-  location: LocationCreateOneWithoutItemInput
-  photos: PhotoCreateManyWithoutItemInput
-}
-
-"""An edge in a connection."""
-type ItemEdge {
-  """The item at the end of the edge."""
-  node: Item!
-
-  """A cursor for use in pagination."""
-  cursor: String!
-}
-
-enum ItemOrderByInput {
-  id_ASC
-  id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-  category_ASC
-  category_DESC
-  price_ASC
-  price_DESC
-  listed_ASC
-  listed_DESC
-}
-
-type ItemPreviousValues {
-  id: ID!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  category: Category
-  price: Float
-  listed: Boolean!
-}
-
-input ItemScalarWhereInput {
-  """Logical AND on all given filters."""
-  AND: [ItemScalarWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [ItemScalarWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [ItemScalarWhereInput!]
-  id: ID
-
-  """All values that are not equal to given value."""
-  id_not: ID
-
-  """All values that are contained in given list."""
-  id_in: [ID!]
-
-  """All values that are not contained in given list."""
-  id_not_in: [ID!]
-
-  """All values less than the given value."""
-  id_lt: ID
-
-  """All values less than or equal the given value."""
-  id_lte: ID
-
-  """All values greater than the given value."""
-  id_gt: ID
-
-  """All values greater than or equal the given value."""
-  id_gte: ID
-
-  """All values containing the given string."""
-  id_contains: ID
-
-  """All values not containing the given string."""
-  id_not_contains: ID
-
-  """All values starting with the given string."""
-  id_starts_with: ID
-
-  """All values not starting with the given string."""
-  id_not_starts_with: ID
-
-  """All values ending with the given string."""
-  id_ends_with: ID
-
-  """All values not ending with the given string."""
-  id_not_ends_with: ID
-  createdAt: DateTime
-
-  """All values that are not equal to given value."""
-  createdAt_not: DateTime
-
-  """All values that are contained in given list."""
-  createdAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
-  createdAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
-  createdAt_lt: DateTime
-
-  """All values less than or equal the given value."""
-  createdAt_lte: DateTime
-
-  """All values greater than the given value."""
-  createdAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-
-  """All values that are not equal to given value."""
-  updatedAt_not: DateTime
-
-  """All values that are contained in given list."""
-  updatedAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
-  updatedAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
-  updatedAt_lt: DateTime
-
-  """All values less than or equal the given value."""
-  updatedAt_lte: DateTime
-
-  """All values greater than the given value."""
-  updatedAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
-  updatedAt_gte: DateTime
-  category: Category
-
-  """All values that are not equal to given value."""
-  category_not: Category
-
-  """All values that are contained in given list."""
-  category_in: [Category!]
-
-  """All values that are not contained in given list."""
-  category_not_in: [Category!]
-  price: Float
-
-  """All values that are not equal to given value."""
-  price_not: Float
-
-  """All values that are contained in given list."""
-  price_in: [Float!]
-
-  """All values that are not contained in given list."""
-  price_not_in: [Float!]
-
-  """All values less than the given value."""
-  price_lt: Float
-
-  """All values less than or equal the given value."""
-  price_lte: Float
-
-  """All values greater than the given value."""
-  price_gt: Float
-
-  """All values greater than or equal the given value."""
-  price_gte: Float
-  listed: Boolean
-
-  """All values that are not equal to given value."""
-  listed_not: Boolean
-}
-
-type ItemSubscriptionPayload {
-  mutation: MutationType!
-  node: Item
-  updatedFields: [String!]
-  previousValues: ItemPreviousValues
-}
-
-input ItemSubscriptionWhereInput {
-  """Logical AND on all given filters."""
-  AND: [ItemSubscriptionWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [ItemSubscriptionWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [ItemSubscriptionWhereInput!]
-
-  """
-  The subscription event gets dispatched when it's listed in mutation_in
-  """
-  mutation_in: [MutationType!]
-
-  """
-  The subscription event gets only dispatched when one of the updated fields names is included in this list
-  """
-  updatedFields_contains: String
-
-  """
-  The subscription event gets only dispatched when all of the field names included in this list have been updated
-  """
-  updatedFields_contains_every: [String!]
-
-  """
-  The subscription event gets only dispatched when some of the field names included in this list have been updated
-  """
-  updatedFields_contains_some: [String!]
-  node: ItemWhereInput
-}
-
-input ItemUpdateInput {
-  category: Category
-  price: Float
-  listed: Boolean
-  location: LocationUpdateOneWithoutItemInput
-  photos: PhotoUpdateManyWithoutItemInput
-  user: UserUpdateOneWithoutItemsInput
-}
-
-input ItemUpdateManyDataInput {
-  category: Category
-  price: Float
-  listed: Boolean
-}
-
-input ItemUpdateManyMutationInput {
-  category: Category
-  price: Float
-  listed: Boolean
-}
-
-input ItemUpdateManyWithoutUserInput {
-  create: [ItemCreateWithoutUserInput!]
-  connect: [ItemWhereUniqueInput!]
-  set: [ItemWhereUniqueInput!]
-  disconnect: [ItemWhereUniqueInput!]
-  delete: [ItemWhereUniqueInput!]
-  update: [ItemUpdateWithWhereUniqueWithoutUserInput!]
-  updateMany: [ItemUpdateManyWithWhereNestedInput!]
-  deleteMany: [ItemScalarWhereInput!]
-  upsert: [ItemUpsertWithWhereUniqueWithoutUserInput!]
-}
-
-input ItemUpdateManyWithWhereNestedInput {
-  where: ItemScalarWhereInput!
-  data: ItemUpdateManyDataInput!
-}
-
-input ItemUpdateOneWithoutLocationInput {
-  create: ItemCreateWithoutLocationInput
-  connect: ItemWhereUniqueInput
-  disconnect: Boolean
-  delete: Boolean
-  update: ItemUpdateWithoutLocationDataInput
-  upsert: ItemUpsertWithoutLocationInput
-}
-
-input ItemUpdateOneWithoutPhotosInput {
-  create: ItemCreateWithoutPhotosInput
-  connect: ItemWhereUniqueInput
-  disconnect: Boolean
-  delete: Boolean
-  update: ItemUpdateWithoutPhotosDataInput
-  upsert: ItemUpsertWithoutPhotosInput
-}
-
-input ItemUpdateWithoutLocationDataInput {
-  category: Category
-  price: Float
-  listed: Boolean
-  photos: PhotoUpdateManyWithoutItemInput
-  user: UserUpdateOneWithoutItemsInput
-}
-
-input ItemUpdateWithoutPhotosDataInput {
-  category: Category
-  price: Float
-  listed: Boolean
-  location: LocationUpdateOneWithoutItemInput
-  user: UserUpdateOneWithoutItemsInput
-}
-
-input ItemUpdateWithoutUserDataInput {
-  category: Category
-  price: Float
-  listed: Boolean
-  location: LocationUpdateOneWithoutItemInput
-  photos: PhotoUpdateManyWithoutItemInput
-}
-
-input ItemUpdateWithWhereUniqueWithoutUserInput {
-  where: ItemWhereUniqueInput!
-  data: ItemUpdateWithoutUserDataInput!
-}
-
-input ItemUpsertWithoutLocationInput {
-  update: ItemUpdateWithoutLocationDataInput!
-  create: ItemCreateWithoutLocationInput!
-}
-
-input ItemUpsertWithoutPhotosInput {
-  update: ItemUpdateWithoutPhotosDataInput!
-  create: ItemCreateWithoutPhotosInput!
-}
-
-input ItemUpsertWithWhereUniqueWithoutUserInput {
-  where: ItemWhereUniqueInput!
-  update: ItemUpdateWithoutUserDataInput!
-  create: ItemCreateWithoutUserInput!
-}
-
-input ItemWhereInput {
-  """Logical AND on all given filters."""
-  AND: [ItemWhereInput!]
-
-  """Logical OR on all given filters."""
-  OR: [ItemWhereInput!]
-
-  """Logical NOT on all given filters combined by AND."""
-  NOT: [ItemWhereInput!]
-  id: ID
-
-  """All values that are not equal to given value."""
-  id_not: ID
-
-  """All values that are contained in given list."""
-  id_in: [ID!]
-
-  """All values that are not contained in given list."""
-  id_not_in: [ID!]
-
-  """All values less than the given value."""
-  id_lt: ID
-
-  """All values less than or equal the given value."""
-  id_lte: ID
-
-  """All values greater than the given value."""
-  id_gt: ID
-
-  """All values greater than or equal the given value."""
-  id_gte: ID
-
-  """All values containing the given string."""
-  id_contains: ID
-
-  """All values not containing the given string."""
-  id_not_contains: ID
-
-  """All values starting with the given string."""
-  id_starts_with: ID
-
-  """All values not starting with the given string."""
-  id_not_starts_with: ID
-
-  """All values ending with the given string."""
-  id_ends_with: ID
-
-  """All values not ending with the given string."""
-  id_not_ends_with: ID
-  createdAt: DateTime
-
-  """All values that are not equal to given value."""
-  createdAt_not: DateTime
-
-  """All values that are contained in given list."""
-  createdAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
-  createdAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
-  createdAt_lt: DateTime
-
-  """All values less than or equal the given value."""
-  createdAt_lte: DateTime
-
-  """All values greater than the given value."""
-  createdAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-
-  """All values that are not equal to given value."""
-  updatedAt_not: DateTime
-
-  """All values that are contained in given list."""
-  updatedAt_in: [DateTime!]
-
-  """All values that are not contained in given list."""
-  updatedAt_not_in: [DateTime!]
-
-  """All values less than the given value."""
-  updatedAt_lt: DateTime
-
-  """All values less than or equal the given value."""
-  updatedAt_lte: DateTime
-
-  """All values greater than the given value."""
-  updatedAt_gt: DateTime
-
-  """All values greater than or equal the given value."""
-  updatedAt_gte: DateTime
-  category: Category
-
-  """All values that are not equal to given value."""
-  category_not: Category
-
-  """All values that are contained in given list."""
-  category_in: [Category!]
-
-  """All values that are not contained in given list."""
-  category_not_in: [Category!]
-  price: Float
-
-  """All values that are not equal to given value."""
-  price_not: Float
-
-  """All values that are contained in given list."""
-  price_in: [Float!]
-
-  """All values that are not contained in given list."""
-  price_not_in: [Float!]
-
-  """All values less than the given value."""
-  price_lt: Float
-
-  """All values less than or equal the given value."""
-  price_lte: Float
-
-  """All values greater than the given value."""
-  price_gt: Float
-
-  """All values greater than or equal the given value."""
-  price_gte: Float
-  listed: Boolean
-
-  """All values that are not equal to given value."""
-  listed_not: Boolean
-  location: LocationWhereInput
-  photos_every: PhotoWhereInput
-  photos_some: PhotoWhereInput
-  photos_none: PhotoWhereInput
-  user: UserWhereInput
-}
-
-input ItemWhereUniqueInput {
-  id: ID
-}
-
 type Location implements Node {
   id: ID!
   createdAt: DateTime!
@@ -636,7 +122,7 @@ type Location implements Node {
   city: String
   state: State
   zip: Int
-  item: Item
+  product: Product
 }
 
 """A connection to a list of items."""
@@ -656,15 +142,15 @@ input LocationCreateInput {
   city: String
   state: State
   zip: Int
-  item: ItemCreateOneWithoutLocationInput
+  product: ProductCreateOneWithoutLocationInput
 }
 
-input LocationCreateOneWithoutItemInput {
-  create: LocationCreateWithoutItemInput
+input LocationCreateOneWithoutProductInput {
+  create: LocationCreateWithoutProductInput
   connect: LocationWhereUniqueInput
 }
 
-input LocationCreateWithoutItemInput {
+input LocationCreateWithoutProductInput {
   lat: Float
   long: Float
   street: String
@@ -761,7 +247,7 @@ input LocationUpdateInput {
   city: String
   state: State
   zip: Int
-  item: ItemUpdateOneWithoutLocationInput
+  product: ProductUpdateOneWithoutLocationInput
 }
 
 input LocationUpdateManyMutationInput {
@@ -773,16 +259,16 @@ input LocationUpdateManyMutationInput {
   zip: Int
 }
 
-input LocationUpdateOneWithoutItemInput {
-  create: LocationCreateWithoutItemInput
+input LocationUpdateOneWithoutProductInput {
+  create: LocationCreateWithoutProductInput
   connect: LocationWhereUniqueInput
   disconnect: Boolean
   delete: Boolean
-  update: LocationUpdateWithoutItemDataInput
-  upsert: LocationUpsertWithoutItemInput
+  update: LocationUpdateWithoutProductDataInput
+  upsert: LocationUpsertWithoutProductInput
 }
 
-input LocationUpdateWithoutItemDataInput {
+input LocationUpdateWithoutProductDataInput {
   lat: Float
   long: Float
   street: String
@@ -791,9 +277,9 @@ input LocationUpdateWithoutItemDataInput {
   zip: Int
 }
 
-input LocationUpsertWithoutItemInput {
-  update: LocationUpdateWithoutItemDataInput!
-  create: LocationCreateWithoutItemInput!
+input LocationUpsertWithoutProductInput {
+  update: LocationUpdateWithoutProductDataInput!
+  create: LocationCreateWithoutProductInput!
 }
 
 input LocationWhereInput {
@@ -1045,7 +531,7 @@ input LocationWhereInput {
 
   """All values greater than or equal the given value."""
   zip_gte: Int
-  item: ItemWhereInput
+  product: ProductWhereInput
 }
 
 input LocationWhereUniqueInput {
@@ -1060,27 +546,27 @@ scalar Long
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
-  createItem(data: ItemCreateInput!): Item!
+  createProduct(data: ProductCreateInput!): Product!
   createLocation(data: LocationCreateInput!): Location!
   createPhoto(data: PhotoCreateInput!): Photo!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateItem(data: ItemUpdateInput!, where: ItemWhereUniqueInput!): Item
+  updateProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
   updateLocation(data: LocationUpdateInput!, where: LocationWhereUniqueInput!): Location
   updatePhoto(data: PhotoUpdateInput!, where: PhotoWhereUniqueInput!): Photo
   deleteUser(where: UserWhereUniqueInput!): User
-  deleteItem(where: ItemWhereUniqueInput!): Item
+  deleteProduct(where: ProductWhereUniqueInput!): Product
   deleteLocation(where: LocationWhereUniqueInput!): Location
   deletePhoto(where: PhotoWhereUniqueInput!): Photo
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  upsertItem(where: ItemWhereUniqueInput!, create: ItemCreateInput!, update: ItemUpdateInput!): Item!
+  upsertProduct(where: ProductWhereUniqueInput!, create: ProductCreateInput!, update: ProductUpdateInput!): Product!
   upsertLocation(where: LocationWhereUniqueInput!, create: LocationCreateInput!, update: LocationUpdateInput!): Location!
   upsertPhoto(where: PhotoWhereUniqueInput!, create: PhotoCreateInput!, update: PhotoUpdateInput!): Photo!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  updateManyItems(data: ItemUpdateManyMutationInput!, where: ItemWhereInput): BatchPayload!
+  updateManyProducts(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): BatchPayload!
   updateManyLocations(data: LocationUpdateManyMutationInput!, where: LocationWhereInput): BatchPayload!
   updateManyPhotos(data: PhotoUpdateManyMutationInput!, where: PhotoWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
-  deleteManyItems(where: ItemWhereInput): BatchPayload!
+  deleteManyProducts(where: ProductWhereInput): BatchPayload!
   deleteManyLocations(where: LocationWhereInput): BatchPayload!
   deleteManyPhotos(where: PhotoWhereInput): BatchPayload!
 }
@@ -1119,7 +605,7 @@ type Photo implements Node {
   url: String
   caption: String
   default: Boolean!
-  item: Item
+  product: Product
   user: User
 }
 
@@ -1137,12 +623,12 @@ input PhotoCreateInput {
   url: String
   caption: String
   default: Boolean
-  item: ItemCreateOneWithoutPhotosInput
+  product: ProductCreateOneWithoutPhotosInput
   user: UserCreateOneWithoutProfilePhotoInput
 }
 
-input PhotoCreateManyWithoutItemInput {
-  create: [PhotoCreateWithoutItemInput!]
+input PhotoCreateManyWithoutProductInput {
+  create: [PhotoCreateWithoutProductInput!]
   connect: [PhotoWhereUniqueInput!]
 }
 
@@ -1151,7 +637,7 @@ input PhotoCreateOneWithoutUserInput {
   connect: PhotoWhereUniqueInput
 }
 
-input PhotoCreateWithoutItemInput {
+input PhotoCreateWithoutProductInput {
   url: String
   caption: String
   default: Boolean
@@ -1162,7 +648,7 @@ input PhotoCreateWithoutUserInput {
   url: String
   caption: String
   default: Boolean
-  item: ItemCreateOneWithoutPhotosInput
+  product: ProductCreateOneWithoutPhotosInput
 }
 
 """An edge in a connection."""
@@ -1420,7 +906,7 @@ input PhotoUpdateInput {
   url: String
   caption: String
   default: Boolean
-  item: ItemUpdateOneWithoutPhotosInput
+  product: ProductUpdateOneWithoutPhotosInput
   user: UserUpdateOneWithoutProfilePhotoInput
 }
 
@@ -1436,16 +922,16 @@ input PhotoUpdateManyMutationInput {
   default: Boolean
 }
 
-input PhotoUpdateManyWithoutItemInput {
-  create: [PhotoCreateWithoutItemInput!]
+input PhotoUpdateManyWithoutProductInput {
+  create: [PhotoCreateWithoutProductInput!]
   connect: [PhotoWhereUniqueInput!]
   set: [PhotoWhereUniqueInput!]
   disconnect: [PhotoWhereUniqueInput!]
   delete: [PhotoWhereUniqueInput!]
-  update: [PhotoUpdateWithWhereUniqueWithoutItemInput!]
+  update: [PhotoUpdateWithWhereUniqueWithoutProductInput!]
   updateMany: [PhotoUpdateManyWithWhereNestedInput!]
   deleteMany: [PhotoScalarWhereInput!]
-  upsert: [PhotoUpsertWithWhereUniqueWithoutItemInput!]
+  upsert: [PhotoUpsertWithWhereUniqueWithoutProductInput!]
 }
 
 input PhotoUpdateManyWithWhereNestedInput {
@@ -1462,7 +948,7 @@ input PhotoUpdateOneWithoutUserInput {
   upsert: PhotoUpsertWithoutUserInput
 }
 
-input PhotoUpdateWithoutItemDataInput {
+input PhotoUpdateWithoutProductDataInput {
   url: String
   caption: String
   default: Boolean
@@ -1473,12 +959,12 @@ input PhotoUpdateWithoutUserDataInput {
   url: String
   caption: String
   default: Boolean
-  item: ItemUpdateOneWithoutPhotosInput
+  product: ProductUpdateOneWithoutPhotosInput
 }
 
-input PhotoUpdateWithWhereUniqueWithoutItemInput {
+input PhotoUpdateWithWhereUniqueWithoutProductInput {
   where: PhotoWhereUniqueInput!
-  data: PhotoUpdateWithoutItemDataInput!
+  data: PhotoUpdateWithoutProductDataInput!
 }
 
 input PhotoUpsertWithoutUserInput {
@@ -1486,10 +972,10 @@ input PhotoUpsertWithoutUserInput {
   create: PhotoCreateWithoutUserInput!
 }
 
-input PhotoUpsertWithWhereUniqueWithoutItemInput {
+input PhotoUpsertWithWhereUniqueWithoutProductInput {
   where: PhotoWhereUniqueInput!
-  update: PhotoUpdateWithoutItemDataInput!
-  create: PhotoCreateWithoutItemInput!
+  update: PhotoUpdateWithoutProductDataInput!
+  create: PhotoCreateWithoutProductInput!
 }
 
 input PhotoWhereInput {
@@ -1669,7 +1155,7 @@ input PhotoWhereInput {
 
   """All values that are not equal to given value."""
   default_not: Boolean
-  item: ItemWhereInput
+  product: ProductWhereInput
   user: UserWhereInput
 }
 
@@ -1677,17 +1163,531 @@ input PhotoWhereUniqueInput {
   id: ID
 }
 
+type Product implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  category: Category
+  price: Float
+  location: Location
+  photos(where: PhotoWhereInput, orderBy: PhotoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Photo!]
+  listed: Boolean!
+  user: User
+}
+
+"""A connection to a list of items."""
+type ProductConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ProductEdge]!
+  aggregate: AggregateProduct!
+}
+
+input ProductCreateInput {
+  category: Category
+  price: Float
+  listed: Boolean
+  location: LocationCreateOneWithoutProductInput
+  photos: PhotoCreateManyWithoutProductInput
+  user: UserCreateOneWithoutProductsInput
+}
+
+input ProductCreateManyWithoutUserInput {
+  create: [ProductCreateWithoutUserInput!]
+  connect: [ProductWhereUniqueInput!]
+}
+
+input ProductCreateOneWithoutLocationInput {
+  create: ProductCreateWithoutLocationInput
+  connect: ProductWhereUniqueInput
+}
+
+input ProductCreateOneWithoutPhotosInput {
+  create: ProductCreateWithoutPhotosInput
+  connect: ProductWhereUniqueInput
+}
+
+input ProductCreateWithoutLocationInput {
+  category: Category
+  price: Float
+  listed: Boolean
+  photos: PhotoCreateManyWithoutProductInput
+  user: UserCreateOneWithoutProductsInput
+}
+
+input ProductCreateWithoutPhotosInput {
+  category: Category
+  price: Float
+  listed: Boolean
+  location: LocationCreateOneWithoutProductInput
+  user: UserCreateOneWithoutProductsInput
+}
+
+input ProductCreateWithoutUserInput {
+  category: Category
+  price: Float
+  listed: Boolean
+  location: LocationCreateOneWithoutProductInput
+  photos: PhotoCreateManyWithoutProductInput
+}
+
+"""An edge in a connection."""
+type ProductEdge {
+  """The item at the end of the edge."""
+  node: Product!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ProductOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  category_ASC
+  category_DESC
+  price_ASC
+  price_DESC
+  listed_ASC
+  listed_DESC
+}
+
+type ProductPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  category: Category
+  price: Float
+  listed: Boolean!
+}
+
+input ProductScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ProductScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ProductScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ProductScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  category: Category
+
+  """All values that are not equal to given value."""
+  category_not: Category
+
+  """All values that are contained in given list."""
+  category_in: [Category!]
+
+  """All values that are not contained in given list."""
+  category_not_in: [Category!]
+  price: Float
+
+  """All values that are not equal to given value."""
+  price_not: Float
+
+  """All values that are contained in given list."""
+  price_in: [Float!]
+
+  """All values that are not contained in given list."""
+  price_not_in: [Float!]
+
+  """All values less than the given value."""
+  price_lt: Float
+
+  """All values less than or equal the given value."""
+  price_lte: Float
+
+  """All values greater than the given value."""
+  price_gt: Float
+
+  """All values greater than or equal the given value."""
+  price_gte: Float
+  listed: Boolean
+
+  """All values that are not equal to given value."""
+  listed_not: Boolean
+}
+
+type ProductSubscriptionPayload {
+  mutation: MutationType!
+  node: Product
+  updatedFields: [String!]
+  previousValues: ProductPreviousValues
+}
+
+input ProductSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ProductSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ProductSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ProductSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ProductWhereInput
+}
+
+input ProductUpdateInput {
+  category: Category
+  price: Float
+  listed: Boolean
+  location: LocationUpdateOneWithoutProductInput
+  photos: PhotoUpdateManyWithoutProductInput
+  user: UserUpdateOneWithoutProductsInput
+}
+
+input ProductUpdateManyDataInput {
+  category: Category
+  price: Float
+  listed: Boolean
+}
+
+input ProductUpdateManyMutationInput {
+  category: Category
+  price: Float
+  listed: Boolean
+}
+
+input ProductUpdateManyWithoutUserInput {
+  create: [ProductCreateWithoutUserInput!]
+  connect: [ProductWhereUniqueInput!]
+  set: [ProductWhereUniqueInput!]
+  disconnect: [ProductWhereUniqueInput!]
+  delete: [ProductWhereUniqueInput!]
+  update: [ProductUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [ProductUpdateManyWithWhereNestedInput!]
+  deleteMany: [ProductScalarWhereInput!]
+  upsert: [ProductUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input ProductUpdateManyWithWhereNestedInput {
+  where: ProductScalarWhereInput!
+  data: ProductUpdateManyDataInput!
+}
+
+input ProductUpdateOneWithoutLocationInput {
+  create: ProductCreateWithoutLocationInput
+  connect: ProductWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: ProductUpdateWithoutLocationDataInput
+  upsert: ProductUpsertWithoutLocationInput
+}
+
+input ProductUpdateOneWithoutPhotosInput {
+  create: ProductCreateWithoutPhotosInput
+  connect: ProductWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: ProductUpdateWithoutPhotosDataInput
+  upsert: ProductUpsertWithoutPhotosInput
+}
+
+input ProductUpdateWithoutLocationDataInput {
+  category: Category
+  price: Float
+  listed: Boolean
+  photos: PhotoUpdateManyWithoutProductInput
+  user: UserUpdateOneWithoutProductsInput
+}
+
+input ProductUpdateWithoutPhotosDataInput {
+  category: Category
+  price: Float
+  listed: Boolean
+  location: LocationUpdateOneWithoutProductInput
+  user: UserUpdateOneWithoutProductsInput
+}
+
+input ProductUpdateWithoutUserDataInput {
+  category: Category
+  price: Float
+  listed: Boolean
+  location: LocationUpdateOneWithoutProductInput
+  photos: PhotoUpdateManyWithoutProductInput
+}
+
+input ProductUpdateWithWhereUniqueWithoutUserInput {
+  where: ProductWhereUniqueInput!
+  data: ProductUpdateWithoutUserDataInput!
+}
+
+input ProductUpsertWithoutLocationInput {
+  update: ProductUpdateWithoutLocationDataInput!
+  create: ProductCreateWithoutLocationInput!
+}
+
+input ProductUpsertWithoutPhotosInput {
+  update: ProductUpdateWithoutPhotosDataInput!
+  create: ProductCreateWithoutPhotosInput!
+}
+
+input ProductUpsertWithWhereUniqueWithoutUserInput {
+  where: ProductWhereUniqueInput!
+  update: ProductUpdateWithoutUserDataInput!
+  create: ProductCreateWithoutUserInput!
+}
+
+input ProductWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ProductWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ProductWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ProductWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  category: Category
+
+  """All values that are not equal to given value."""
+  category_not: Category
+
+  """All values that are contained in given list."""
+  category_in: [Category!]
+
+  """All values that are not contained in given list."""
+  category_not_in: [Category!]
+  price: Float
+
+  """All values that are not equal to given value."""
+  price_not: Float
+
+  """All values that are contained in given list."""
+  price_in: [Float!]
+
+  """All values that are not contained in given list."""
+  price_not_in: [Float!]
+
+  """All values less than the given value."""
+  price_lt: Float
+
+  """All values less than or equal the given value."""
+  price_lte: Float
+
+  """All values greater than the given value."""
+  price_gt: Float
+
+  """All values greater than or equal the given value."""
+  price_gte: Float
+  listed: Boolean
+
+  """All values that are not equal to given value."""
+  listed_not: Boolean
+  location: LocationWhereInput
+  photos_every: PhotoWhereInput
+  photos_some: PhotoWhereInput
+  photos_none: PhotoWhereInput
+  user: UserWhereInput
+}
+
+input ProductWhereUniqueInput {
+  id: ID
+}
+
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item]!
+  products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product]!
   locations(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Location]!
   photos(where: PhotoWhereInput, orderBy: PhotoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Photo]!
   user(where: UserWhereUniqueInput!): User
-  item(where: ItemWhereUniqueInput!): Item
+  product(where: ProductWhereUniqueInput!): Product
   location(where: LocationWhereUniqueInput!): Location
   photo(where: PhotoWhereUniqueInput!): Photo
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
+  productsConnection(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProductConnection!
   locationsConnection(where: LocationWhereInput, orderBy: LocationOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LocationConnection!
   photosConnection(where: PhotoWhereInput, orderBy: PhotoOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PhotoConnection!
 
@@ -1762,7 +1762,7 @@ enum State {
 
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
-  item(where: ItemSubscriptionWhereInput): ItemSubscriptionPayload
+  product(where: ProductSubscriptionWhereInput): ProductSubscriptionPayload
   location(where: LocationSubscriptionWhereInput): LocationSubscriptionPayload
   photo(where: PhotoSubscriptionWhereInput): PhotoSubscriptionPayload
 }
@@ -1774,7 +1774,7 @@ type User implements Node {
   email: String!
   password: String!
   name: String!
-  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item!]
+  products(where: ProductWhereInput, orderBy: ProductOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Product!]
   profilePhoto: Photo
 }
 
@@ -1792,12 +1792,12 @@ input UserCreateInput {
   email: String!
   password: String!
   name: String!
-  items: ItemCreateManyWithoutUserInput
+  products: ProductCreateManyWithoutUserInput
   profilePhoto: PhotoCreateOneWithoutUserInput
 }
 
-input UserCreateOneWithoutItemsInput {
-  create: UserCreateWithoutItemsInput
+input UserCreateOneWithoutProductsInput {
+  create: UserCreateWithoutProductsInput
   connect: UserWhereUniqueInput
 }
 
@@ -1806,7 +1806,7 @@ input UserCreateOneWithoutProfilePhotoInput {
   connect: UserWhereUniqueInput
 }
 
-input UserCreateWithoutItemsInput {
+input UserCreateWithoutProductsInput {
   email: String!
   password: String!
   name: String!
@@ -1817,7 +1817,7 @@ input UserCreateWithoutProfilePhotoInput {
   email: String!
   password: String!
   name: String!
-  items: ItemCreateManyWithoutUserInput
+  products: ProductCreateManyWithoutUserInput
 }
 
 """An edge in a connection."""
@@ -1896,7 +1896,7 @@ input UserUpdateInput {
   email: String
   password: String
   name: String
-  items: ItemUpdateManyWithoutUserInput
+  products: ProductUpdateManyWithoutUserInput
   profilePhoto: PhotoUpdateOneWithoutUserInput
 }
 
@@ -1906,13 +1906,13 @@ input UserUpdateManyMutationInput {
   name: String
 }
 
-input UserUpdateOneWithoutItemsInput {
-  create: UserCreateWithoutItemsInput
+input UserUpdateOneWithoutProductsInput {
+  create: UserCreateWithoutProductsInput
   connect: UserWhereUniqueInput
   disconnect: Boolean
   delete: Boolean
-  update: UserUpdateWithoutItemsDataInput
-  upsert: UserUpsertWithoutItemsInput
+  update: UserUpdateWithoutProductsDataInput
+  upsert: UserUpsertWithoutProductsInput
 }
 
 input UserUpdateOneWithoutProfilePhotoInput {
@@ -1924,7 +1924,7 @@ input UserUpdateOneWithoutProfilePhotoInput {
   upsert: UserUpsertWithoutProfilePhotoInput
 }
 
-input UserUpdateWithoutItemsDataInput {
+input UserUpdateWithoutProductsDataInput {
   email: String
   password: String
   name: String
@@ -1935,12 +1935,12 @@ input UserUpdateWithoutProfilePhotoDataInput {
   email: String
   password: String
   name: String
-  items: ItemUpdateManyWithoutUserInput
+  products: ProductUpdateManyWithoutUserInput
 }
 
-input UserUpsertWithoutItemsInput {
-  update: UserUpdateWithoutItemsDataInput!
-  create: UserCreateWithoutItemsInput!
+input UserUpsertWithoutProductsInput {
+  update: UserUpdateWithoutProductsDataInput!
+  create: UserCreateWithoutProductsInput!
 }
 
 input UserUpsertWithoutProfilePhotoInput {
@@ -2161,9 +2161,9 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
-  items_every: ItemWhereInput
-  items_some: ItemWhereInput
-  items_none: ItemWhereInput
+  products_every: ProductWhereInput
+  products_some: ProductWhereInput
+  products_none: ProductWhereInput
   profilePhoto: PhotoWhereInput
 }
 
@@ -2252,7 +2252,7 @@ export type UserOrderByInput =   'id_ASC' |
   'name_ASC' |
   'name_DESC'
 
-export type ItemOrderByInput =   'id_ASC' |
+export type ProductOrderByInput =   'id_ASC' |
   'id_DESC' |
   'createdAt_ASC' |
   'createdAt_DESC' |
@@ -2306,12 +2306,12 @@ export type MutationType =   'CREATED' |
   'UPDATED' |
   'DELETED'
 
-export interface ItemCreateWithoutLocationInput {
+export interface ProductCreateWithoutLocationInput {
   category?: Category
   price?: Float
   listed?: Boolean
-  photos?: PhotoCreateManyWithoutItemInput
-  user?: UserCreateOneWithoutItemsInput
+  photos?: PhotoCreateManyWithoutProductInput
+  user?: UserCreateOneWithoutProductsInput
 }
 
 export interface UserWhereInput {
@@ -2390,18 +2390,18 @@ export interface UserWhereInput {
   name_not_starts_with?: String
   name_ends_with?: String
   name_not_ends_with?: String
-  items_every?: ItemWhereInput
-  items_some?: ItemWhereInput
-  items_none?: ItemWhereInput
+  products_every?: ProductWhereInput
+  products_some?: ProductWhereInput
+  products_none?: ProductWhereInput
   profilePhoto?: PhotoWhereInput
 }
 
-export interface ItemUpdateWithoutUserDataInput {
+export interface ProductUpdateWithoutUserDataInput {
   category?: Category
   price?: Float
   listed?: Boolean
-  location?: LocationUpdateOneWithoutItemInput
-  photos?: PhotoUpdateManyWithoutItemInput
+  location?: LocationUpdateOneWithoutProductInput
+  photos?: PhotoUpdateManyWithoutProductInput
 }
 
 export interface LocationWhereInput {
@@ -2494,16 +2494,16 @@ export interface LocationWhereInput {
   zip_lte?: Int
   zip_gt?: Int
   zip_gte?: Int
-  item?: ItemWhereInput
+  product?: ProductWhereInput
 }
 
-export interface LocationUpdateOneWithoutItemInput {
-  create?: LocationCreateWithoutItemInput
+export interface LocationUpdateOneWithoutProductInput {
+  create?: LocationCreateWithoutProductInput
   connect?: LocationWhereUniqueInput
   disconnect?: Boolean
   delete?: Boolean
-  update?: LocationUpdateWithoutItemDataInput
-  upsert?: LocationUpsertWithoutItemInput
+  update?: LocationUpdateWithoutProductDataInput
+  upsert?: LocationUpsertWithoutProductInput
 }
 
 export interface PhotoWhereInput {
@@ -2570,7 +2570,7 @@ export interface PhotoWhereInput {
   caption_not_ends_with?: String
   default?: Boolean
   default_not?: Boolean
-  item?: ItemWhereInput
+  product?: ProductWhereInput
   user?: UserWhereInput
 }
 
@@ -2583,17 +2583,17 @@ export interface PhotoUpdateWithoutUserDataInput {
   url?: String
   caption?: String
   default?: Boolean
-  item?: ItemUpdateOneWithoutPhotosInput
+  product?: ProductUpdateOneWithoutPhotosInput
 }
 
 export interface PhotoCreateWithoutUserInput {
   url?: String
   caption?: String
   default?: Boolean
-  item?: ItemCreateOneWithoutPhotosInput
+  product?: ProductCreateOneWithoutPhotosInput
 }
 
-export interface LocationUpdateWithoutItemDataInput {
+export interface LocationUpdateWithoutProductDataInput {
   lat?: Float
   long?: Float
   street?: String
@@ -2602,9 +2602,9 @@ export interface LocationUpdateWithoutItemDataInput {
   zip?: Int
 }
 
-export interface ItemCreateOneWithoutPhotosInput {
-  create?: ItemCreateWithoutPhotosInput
-  connect?: ItemWhereUniqueInput
+export interface ProductCreateOneWithoutPhotosInput {
+  create?: ProductCreateWithoutPhotosInput
+  connect?: ProductWhereUniqueInput
 }
 
 export interface LocationSubscriptionWhereInput {
@@ -2618,18 +2618,18 @@ export interface LocationSubscriptionWhereInput {
   node?: LocationWhereInput
 }
 
-export interface ItemCreateWithoutPhotosInput {
+export interface ProductCreateWithoutPhotosInput {
   category?: Category
   price?: Float
   listed?: Boolean
-  location?: LocationCreateOneWithoutItemInput
-  user?: UserCreateOneWithoutItemsInput
+  location?: LocationCreateOneWithoutProductInput
+  user?: UserCreateOneWithoutProductsInput
 }
 
-export interface ItemWhereInput {
-  AND?: ItemWhereInput[] | ItemWhereInput
-  OR?: ItemWhereInput[] | ItemWhereInput
-  NOT?: ItemWhereInput[] | ItemWhereInput
+export interface ProductWhereInput {
+  AND?: ProductWhereInput[] | ProductWhereInput
+  OR?: ProductWhereInput[] | ProductWhereInput
+  NOT?: ProductWhereInput[] | ProductWhereInput
   id?: ID_Input
   id_not?: ID_Input
   id_in?: ID_Input[] | ID_Input
@@ -2681,8 +2681,8 @@ export interface ItemWhereInput {
   user?: UserWhereInput
 }
 
-export interface UserCreateOneWithoutItemsInput {
-  create?: UserCreateWithoutItemsInput
+export interface UserCreateOneWithoutProductsInput {
+  create?: UserCreateWithoutProductsInput
   connect?: UserWhereUniqueInput
 }
 
@@ -2692,24 +2692,24 @@ export interface PhotoUpdateManyMutationInput {
   default?: Boolean
 }
 
-export interface UserCreateWithoutItemsInput {
+export interface UserCreateWithoutProductsInput {
   email: String
   password: String
   name: String
   profilePhoto?: PhotoCreateOneWithoutUserInput
 }
 
-export interface ItemWhereUniqueInput {
+export interface ProductWhereUniqueInput {
   id?: ID_Input
 }
 
-export interface ItemCreateInput {
+export interface ProductCreateInput {
   category?: Category
   price?: Float
   listed?: Boolean
-  location?: LocationCreateOneWithoutItemInput
-  photos?: PhotoCreateManyWithoutItemInput
-  user?: UserCreateOneWithoutItemsInput
+  location?: LocationCreateOneWithoutProductInput
+  photos?: PhotoCreateManyWithoutProductInput
+  user?: UserCreateOneWithoutProductsInput
 }
 
 export interface PhotoWhereUniqueInput {
@@ -2723,50 +2723,50 @@ export interface LocationCreateInput {
   city?: String
   state?: State
   zip?: Int
-  item?: ItemCreateOneWithoutLocationInput
+  product?: ProductCreateOneWithoutLocationInput
 }
 
-export interface ItemUpdateManyMutationInput {
+export interface ProductUpdateManyMutationInput {
   category?: Category
   price?: Float
   listed?: Boolean
 }
 
-export interface ItemCreateOneWithoutLocationInput {
-  create?: ItemCreateWithoutLocationInput
-  connect?: ItemWhereUniqueInput
+export interface ProductCreateOneWithoutLocationInput {
+  create?: ProductCreateWithoutLocationInput
+  connect?: ProductWhereUniqueInput
 }
 
 export interface PhotoUpdateInput {
   url?: String
   caption?: String
   default?: Boolean
-  item?: ItemUpdateOneWithoutPhotosInput
+  product?: ProductUpdateOneWithoutPhotosInput
   user?: UserUpdateOneWithoutProfilePhotoInput
 }
 
-export interface UserUpdateOneWithoutItemsInput {
-  create?: UserCreateWithoutItemsInput
+export interface UserUpdateOneWithoutProductsInput {
+  create?: UserCreateWithoutProductsInput
   connect?: UserWhereUniqueInput
   disconnect?: Boolean
   delete?: Boolean
-  update?: UserUpdateWithoutItemsDataInput
-  upsert?: UserUpsertWithoutItemsInput
+  update?: UserUpdateWithoutProductsDataInput
+  upsert?: UserUpsertWithoutProductsInput
 }
 
-export interface ItemUpdateWithoutLocationDataInput {
+export interface ProductUpdateWithoutLocationDataInput {
   category?: Category
   price?: Float
   listed?: Boolean
-  photos?: PhotoUpdateManyWithoutItemInput
-  user?: UserUpdateOneWithoutItemsInput
+  photos?: PhotoUpdateManyWithoutProductInput
+  user?: UserUpdateOneWithoutProductsInput
 }
 
 export interface PhotoCreateInput {
   url?: String
   caption?: String
   default?: Boolean
-  item?: ItemCreateOneWithoutPhotosInput
+  product?: ProductCreateOneWithoutPhotosInput
   user?: UserCreateOneWithoutProfilePhotoInput
 }
 
@@ -2777,14 +2777,14 @@ export interface LocationUpdateInput {
   city?: String
   state?: State
   zip?: Int
-  item?: ItemUpdateOneWithoutLocationInput
+  product?: ProductUpdateOneWithoutLocationInput
 }
 
 export interface UserUpdateInput {
   email?: String
   password?: String
   name?: String
-  items?: ItemUpdateManyWithoutUserInput
+  products?: ProductUpdateManyWithoutUserInput
   profilePhoto?: PhotoUpdateOneWithoutUserInput
 }
 
@@ -2793,62 +2793,62 @@ export interface PhotoUpsertWithoutUserInput {
   create: PhotoCreateWithoutUserInput
 }
 
-export interface ItemUpdateManyWithoutUserInput {
-  create?: ItemCreateWithoutUserInput[] | ItemCreateWithoutUserInput
-  connect?: ItemWhereUniqueInput[] | ItemWhereUniqueInput
-  set?: ItemWhereUniqueInput[] | ItemWhereUniqueInput
-  disconnect?: ItemWhereUniqueInput[] | ItemWhereUniqueInput
-  delete?: ItemWhereUniqueInput[] | ItemWhereUniqueInput
-  update?: ItemUpdateWithWhereUniqueWithoutUserInput[] | ItemUpdateWithWhereUniqueWithoutUserInput
-  updateMany?: ItemUpdateManyWithWhereNestedInput[] | ItemUpdateManyWithWhereNestedInput
-  deleteMany?: ItemScalarWhereInput[] | ItemScalarWhereInput
-  upsert?: ItemUpsertWithWhereUniqueWithoutUserInput[] | ItemUpsertWithWhereUniqueWithoutUserInput
+export interface ProductUpdateManyWithoutUserInput {
+  create?: ProductCreateWithoutUserInput[] | ProductCreateWithoutUserInput
+  connect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput
+  set?: ProductWhereUniqueInput[] | ProductWhereUniqueInput
+  disconnect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput
+  delete?: ProductWhereUniqueInput[] | ProductWhereUniqueInput
+  update?: ProductUpdateWithWhereUniqueWithoutUserInput[] | ProductUpdateWithWhereUniqueWithoutUserInput
+  updateMany?: ProductUpdateManyWithWhereNestedInput[] | ProductUpdateManyWithWhereNestedInput
+  deleteMany?: ProductScalarWhereInput[] | ProductScalarWhereInput
+  upsert?: ProductUpsertWithWhereUniqueWithoutUserInput[] | ProductUpsertWithWhereUniqueWithoutUserInput
 }
 
-export interface UserUpsertWithoutItemsInput {
-  update: UserUpdateWithoutItemsDataInput
-  create: UserCreateWithoutItemsInput
+export interface UserUpsertWithoutProductsInput {
+  update: UserUpdateWithoutProductsDataInput
+  create: UserCreateWithoutProductsInput
 }
 
-export interface ItemUpdateWithWhereUniqueWithoutUserInput {
-  where: ItemWhereUniqueInput
-  data: ItemUpdateWithoutUserDataInput
+export interface ProductUpdateWithWhereUniqueWithoutUserInput {
+  where: ProductWhereUniqueInput
+  data: ProductUpdateWithoutUserDataInput
 }
 
 export interface UserCreateInput {
   email: String
   password: String
   name: String
-  items?: ItemCreateManyWithoutUserInput
+  products?: ProductCreateManyWithoutUserInput
   profilePhoto?: PhotoCreateOneWithoutUserInput
 }
 
-export interface ItemUpdateWithoutPhotosDataInput {
+export interface ProductUpdateWithoutPhotosDataInput {
   category?: Category
   price?: Float
   listed?: Boolean
-  location?: LocationUpdateOneWithoutItemInput
-  user?: UserUpdateOneWithoutItemsInput
+  location?: LocationUpdateOneWithoutProductInput
+  user?: UserUpdateOneWithoutProductsInput
 }
 
-export interface ItemCreateWithoutUserInput {
+export interface ProductCreateWithoutUserInput {
   category?: Category
   price?: Float
   listed?: Boolean
-  location?: LocationCreateOneWithoutItemInput
-  photos?: PhotoCreateManyWithoutItemInput
+  location?: LocationCreateOneWithoutProductInput
+  photos?: PhotoCreateManyWithoutProductInput
 }
 
-export interface ItemUpdateOneWithoutPhotosInput {
-  create?: ItemCreateWithoutPhotosInput
-  connect?: ItemWhereUniqueInput
+export interface ProductUpdateOneWithoutPhotosInput {
+  create?: ProductCreateWithoutPhotosInput
+  connect?: ProductWhereUniqueInput
   disconnect?: Boolean
   delete?: Boolean
-  update?: ItemUpdateWithoutPhotosDataInput
-  upsert?: ItemUpsertWithoutPhotosInput
+  update?: ProductUpdateWithoutPhotosDataInput
+  upsert?: ProductUpsertWithoutPhotosInput
 }
 
-export interface LocationCreateWithoutItemInput {
+export interface LocationCreateWithoutProductInput {
   lat?: Float
   long?: Float
   street?: String
@@ -2857,7 +2857,7 @@ export interface LocationCreateWithoutItemInput {
   zip?: Int
 }
 
-export interface PhotoCreateWithoutItemInput {
+export interface PhotoCreateWithoutProductInput {
   url?: String
   caption?: String
   default?: Boolean
@@ -2868,35 +2868,35 @@ export interface UserCreateWithoutProfilePhotoInput {
   email: String
   password: String
   name: String
-  items?: ItemCreateManyWithoutUserInput
+  products?: ProductCreateManyWithoutUserInput
 }
 
-export interface LocationUpsertWithoutItemInput {
-  update: LocationUpdateWithoutItemDataInput
-  create: LocationCreateWithoutItemInput
+export interface LocationUpsertWithoutProductInput {
+  update: LocationUpdateWithoutProductDataInput
+  create: LocationCreateWithoutProductInput
 }
 
-export interface ItemSubscriptionWhereInput {
-  AND?: ItemSubscriptionWhereInput[] | ItemSubscriptionWhereInput
-  OR?: ItemSubscriptionWhereInput[] | ItemSubscriptionWhereInput
-  NOT?: ItemSubscriptionWhereInput[] | ItemSubscriptionWhereInput
+export interface ProductSubscriptionWhereInput {
+  AND?: ProductSubscriptionWhereInput[] | ProductSubscriptionWhereInput
+  OR?: ProductSubscriptionWhereInput[] | ProductSubscriptionWhereInput
+  NOT?: ProductSubscriptionWhereInput[] | ProductSubscriptionWhereInput
   mutation_in?: MutationType[] | MutationType
   updatedFields_contains?: String
   updatedFields_contains_every?: String[] | String
   updatedFields_contains_some?: String[] | String
-  node?: ItemWhereInput
+  node?: ProductWhereInput
 }
 
-export interface PhotoUpdateManyWithoutItemInput {
-  create?: PhotoCreateWithoutItemInput[] | PhotoCreateWithoutItemInput
+export interface PhotoUpdateManyWithoutProductInput {
+  create?: PhotoCreateWithoutProductInput[] | PhotoCreateWithoutProductInput
   connect?: PhotoWhereUniqueInput[] | PhotoWhereUniqueInput
   set?: PhotoWhereUniqueInput[] | PhotoWhereUniqueInput
   disconnect?: PhotoWhereUniqueInput[] | PhotoWhereUniqueInput
   delete?: PhotoWhereUniqueInput[] | PhotoWhereUniqueInput
-  update?: PhotoUpdateWithWhereUniqueWithoutItemInput[] | PhotoUpdateWithWhereUniqueWithoutItemInput
+  update?: PhotoUpdateWithWhereUniqueWithoutProductInput[] | PhotoUpdateWithWhereUniqueWithoutProductInput
   updateMany?: PhotoUpdateManyWithWhereNestedInput[] | PhotoUpdateManyWithWhereNestedInput
   deleteMany?: PhotoScalarWhereInput[] | PhotoScalarWhereInput
-  upsert?: PhotoUpsertWithWhereUniqueWithoutItemInput[] | PhotoUpsertWithWhereUniqueWithoutItemInput
+  upsert?: PhotoUpsertWithWhereUniqueWithoutProductInput[] | PhotoUpsertWithWhereUniqueWithoutProductInput
 }
 
 export interface UserWhereUniqueInput {
@@ -2904,9 +2904,9 @@ export interface UserWhereUniqueInput {
   email?: String
 }
 
-export interface PhotoUpdateWithWhereUniqueWithoutItemInput {
+export interface PhotoUpdateWithWhereUniqueWithoutProductInput {
   where: PhotoWhereUniqueInput
-  data: PhotoUpdateWithoutItemDataInput
+  data: PhotoUpdateWithoutProductDataInput
 }
 
 export interface LocationUpdateManyMutationInput {
@@ -2918,16 +2918,16 @@ export interface LocationUpdateManyMutationInput {
   zip?: Int
 }
 
-export interface PhotoUpdateWithoutItemDataInput {
+export interface PhotoUpdateWithoutProductDataInput {
   url?: String
   caption?: String
   default?: Boolean
   user?: UserUpdateOneWithoutProfilePhotoInput
 }
 
-export interface ItemUpsertWithoutLocationInput {
-  update: ItemUpdateWithoutLocationDataInput
-  create: ItemCreateWithoutLocationInput
+export interface ProductUpsertWithoutLocationInput {
+  update: ProductUpdateWithoutLocationDataInput
+  create: ProductCreateWithoutLocationInput
 }
 
 export interface UserUpdateOneWithoutProfilePhotoInput {
@@ -2939,23 +2939,23 @@ export interface UserUpdateOneWithoutProfilePhotoInput {
   upsert?: UserUpsertWithoutProfilePhotoInput
 }
 
-export interface ItemUpdateInput {
+export interface ProductUpdateInput {
   category?: Category
   price?: Float
   listed?: Boolean
-  location?: LocationUpdateOneWithoutItemInput
-  photos?: PhotoUpdateManyWithoutItemInput
-  user?: UserUpdateOneWithoutItemsInput
+  location?: LocationUpdateOneWithoutProductInput
+  photos?: PhotoUpdateManyWithoutProductInput
+  user?: UserUpdateOneWithoutProductsInput
 }
 
 export interface UserUpdateWithoutProfilePhotoDataInput {
   email?: String
   password?: String
   name?: String
-  items?: ItemUpdateManyWithoutUserInput
+  products?: ProductUpdateManyWithoutUserInput
 }
 
-export interface UserUpdateWithoutItemsDataInput {
+export interface UserUpdateWithoutProductsDataInput {
   email?: String
   password?: String
   name?: String
@@ -2967,8 +2967,8 @@ export interface UserUpsertWithoutProfilePhotoInput {
   create: UserCreateWithoutProfilePhotoInput
 }
 
-export interface LocationCreateOneWithoutItemInput {
-  create?: LocationCreateWithoutItemInput
+export interface LocationCreateOneWithoutProductInput {
+  create?: LocationCreateWithoutProductInput
   connect?: LocationWhereUniqueInput
 }
 
@@ -3071,24 +3071,24 @@ export interface UserUpdateManyMutationInput {
   name?: String
 }
 
-export interface PhotoUpsertWithWhereUniqueWithoutItemInput {
+export interface PhotoUpsertWithWhereUniqueWithoutProductInput {
   where: PhotoWhereUniqueInput
-  update: PhotoUpdateWithoutItemDataInput
-  create: PhotoCreateWithoutItemInput
+  update: PhotoUpdateWithoutProductDataInput
+  create: PhotoCreateWithoutProductInput
 }
 
-export interface ItemUpsertWithoutPhotosInput {
-  update: ItemUpdateWithoutPhotosDataInput
-  create: ItemCreateWithoutPhotosInput
+export interface ProductUpsertWithoutPhotosInput {
+  update: ProductUpdateWithoutPhotosDataInput
+  create: ProductCreateWithoutPhotosInput
 }
 
-export interface ItemUpdateManyWithWhereNestedInput {
-  where: ItemScalarWhereInput
-  data: ItemUpdateManyDataInput
+export interface ProductUpdateManyWithWhereNestedInput {
+  where: ProductScalarWhereInput
+  data: ProductUpdateManyDataInput
 }
 
-export interface PhotoCreateManyWithoutItemInput {
-  create?: PhotoCreateWithoutItemInput[] | PhotoCreateWithoutItemInput
+export interface PhotoCreateManyWithoutProductInput {
+  create?: PhotoCreateWithoutProductInput[] | PhotoCreateWithoutProductInput
   connect?: PhotoWhereUniqueInput[] | PhotoWhereUniqueInput
 }
 
@@ -3101,22 +3101,22 @@ export interface PhotoUpdateOneWithoutUserInput {
   upsert?: PhotoUpsertWithoutUserInput
 }
 
-export interface ItemUpsertWithWhereUniqueWithoutUserInput {
-  where: ItemWhereUniqueInput
-  update: ItemUpdateWithoutUserDataInput
-  create: ItemCreateWithoutUserInput
+export interface ProductUpsertWithWhereUniqueWithoutUserInput {
+  where: ProductWhereUniqueInput
+  update: ProductUpdateWithoutUserDataInput
+  create: ProductCreateWithoutUserInput
 }
 
-export interface ItemUpdateManyDataInput {
+export interface ProductUpdateManyDataInput {
   category?: Category
   price?: Float
   listed?: Boolean
 }
 
-export interface ItemScalarWhereInput {
-  AND?: ItemScalarWhereInput[] | ItemScalarWhereInput
-  OR?: ItemScalarWhereInput[] | ItemScalarWhereInput
-  NOT?: ItemScalarWhereInput[] | ItemScalarWhereInput
+export interface ProductScalarWhereInput {
+  AND?: ProductScalarWhereInput[] | ProductScalarWhereInput
+  OR?: ProductScalarWhereInput[] | ProductScalarWhereInput
+  NOT?: ProductScalarWhereInput[] | ProductScalarWhereInput
   id?: ID_Input
   id_not?: ID_Input
   id_in?: ID_Input[] | ID_Input
@@ -3174,18 +3174,18 @@ export interface PhotoSubscriptionWhereInput {
   node?: PhotoWhereInput
 }
 
-export interface ItemCreateManyWithoutUserInput {
-  create?: ItemCreateWithoutUserInput[] | ItemCreateWithoutUserInput
-  connect?: ItemWhereUniqueInput[] | ItemWhereUniqueInput
+export interface ProductCreateManyWithoutUserInput {
+  create?: ProductCreateWithoutUserInput[] | ProductCreateWithoutUserInput
+  connect?: ProductWhereUniqueInput[] | ProductWhereUniqueInput
 }
 
-export interface ItemUpdateOneWithoutLocationInput {
-  create?: ItemCreateWithoutLocationInput
-  connect?: ItemWhereUniqueInput
+export interface ProductUpdateOneWithoutLocationInput {
+  create?: ProductCreateWithoutLocationInput
+  connect?: ProductWhereUniqueInput
   disconnect?: Boolean
   delete?: Boolean
-  update?: ItemUpdateWithoutLocationDataInput
-  upsert?: ItemUpsertWithoutLocationInput
+  update?: ProductUpdateWithoutLocationDataInput
+  upsert?: ProductUpsertWithoutLocationInput
 }
 
 export interface LocationWhereUniqueInput {
@@ -3227,7 +3227,7 @@ export interface User extends Node {
   email: String
   password: String
   name: String
-  items?: Item[]
+  products?: Product[]
   profilePhoto?: Photo
 }
 
@@ -3235,7 +3235,7 @@ export interface BatchPayload {
   count: Long
 }
 
-export interface ItemPreviousValues {
+export interface ProductPreviousValues {
   id: ID_Output
   createdAt: DateTime
   updatedAt: DateTime
@@ -3303,7 +3303,7 @@ export interface LocationSubscriptionPayload {
   previousValues?: LocationPreviousValues
 }
 
-export interface AggregateItem {
+export interface AggregateProduct {
   count: Int
 }
 
@@ -3314,7 +3314,7 @@ export interface Photo extends Node {
   url?: String
   caption?: String
   default: Boolean
-  item?: Item
+  product?: Product
   user?: User
 }
 
@@ -3322,13 +3322,13 @@ export interface Photo extends Node {
  * A connection to a list of items.
 
  */
-export interface ItemConnection {
+export interface ProductConnection {
   pageInfo: PageInfo
-  edges: ItemEdge[]
-  aggregate: AggregateItem
+  edges: ProductEdge[]
+  aggregate: AggregateProduct
 }
 
-export interface Item extends Node {
+export interface Product extends Node {
   id: ID_Output
   createdAt: DateTime
   updatedAt: DateTime
@@ -3353,11 +3353,11 @@ export interface AggregateLocation {
   count: Int
 }
 
-export interface ItemSubscriptionPayload {
+export interface ProductSubscriptionPayload {
   mutation: MutationType
-  node?: Item
+  node?: Product
   updatedFields?: String[]
-  previousValues?: ItemPreviousValues
+  previousValues?: ProductPreviousValues
 }
 
 export interface Location extends Node {
@@ -3370,7 +3370,7 @@ export interface Location extends Node {
   city?: String
   state?: State
   zip?: Int
-  item?: Item
+  product?: Product
 }
 
 export interface UserPreviousValues {
@@ -3416,8 +3416,8 @@ export interface AggregateUser {
  * An edge in a connection.
 
  */
-export interface ItemEdge {
-  node: Item
+export interface ProductEdge {
+  node: Product
   cursor: String
 }
 

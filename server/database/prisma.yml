@@ -1,5 +1,6 @@
 # The endpoint of your Prisma API (deployed to a Prisma Sandbox).
-endpoint: https://us1.prisma.sh/raj-singh/demo/dev
+#endpoint: ${env:PRISMA_ENDPOINT}
+endpoint: https://us1.prisma.sh/raj-singh/react-graphql-fullstack/dev
 
 # The file containing the definition of your data model.
 datamodel:

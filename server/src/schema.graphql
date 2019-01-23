@@ -2,4 +2,11 @@
 
 type Query {
 	user(id: ID, email: String): User
+	users(where: UserWhereInput): [User]
+	product(where: ProductWhereUniqueInput!): Product
+	products(where: ProductWhereInput): [Product]
+	photo(where: PhotoWhereUniqueInput!): Photo
+	photos(where: PhotoWhereInput): [Photo]
+	location(where: LocationWhereUniqueInput): Location
+	locations(where: LocationWhereInput): [Location]
 }

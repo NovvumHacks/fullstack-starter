@@ -15,22 +15,5 @@
   text-align: left;
 }
 
-.links {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  text-align: center;
-  width: 100%;
-  border-top: solid 1px #eee;
-  padding: 15px;
-}
 
-.link {
-  color: red;
-  text-decoration: none;
-}
 
-.link:hover {
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-  text-decoration: underline;
-}

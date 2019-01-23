@@ -5,20 +5,20 @@ type User {
 	email: String! @unique
 	password: String!
 	name: String!
-	items: [Item!] @relation(name: "UsersItem")
+	products: [Product!] @relation(name: "UsersProduct")
 	profilePhoto: Photo @relation(name: "UserProfilePhoto")
 }
 
-type Item {
+type Product {
 	id: ID! @unique
 	createdAt: DateTime!
 	updatedAt: DateTime!
 	category: Category
 	price: Float
-	location: Location @relation(name: "ItemsLocation")
-	photos: [Photo!] @relation(name: "ItemPhotos")
+	location: Location @relation(name: "ProductsLocation")
+	photos: [Photo!] @relation(name: "ProductPhotos")
 	listed: Boolean! @default(value: false)
-	user: User @relation(name: "UsersItem")
+	user: User @relation(name: "UsersProduct")
 }
 
 type Location {
@@ -31,7 +31,7 @@ type Location {
 	city: String
 	state: State
 	zip: Int
-	item: Item @relation(name: "ItemsLocation")
+	product: Product @relation(name: "ProductsLocation")
 }
 
 type Photo {
@@ -41,6 +41,6 @@ type Photo {
 	url: String
 	caption: String
 	default: Boolean! @default(value: false)
-	item: Item @relation(name: "ItemPhotos")
+	product: Product @relation(name: "ProductPhotos")
 	user: User @relation(name: "UserProfilePhoto")
 }
