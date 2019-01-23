@@ -31,7 +31,9 @@ const BasicList = props => (
 								key={c.id}
 								title={c.user.name}
 								subtitle={`$${c.price}`}
-								code={`${c}`}
+								code={`id: ${c.id}
+									category: ${c.category}
+								`}
 							/>
 						))}
 					</div>
